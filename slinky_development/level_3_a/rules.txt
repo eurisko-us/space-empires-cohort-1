@@ -1,0 +1,9 @@
+Game is like level 3, but with no economic phase, and only 5 turns long.
+
+2 players: Berserker vs Stationary player
+
+- Berserker immediately sends its scouts to the stationary player
+
+- Stationary player literally does nothing
+
+During combat, the attacker always attacks the defender highest in the combat order
