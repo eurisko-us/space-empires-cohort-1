@@ -1,1 +1,1 @@
-#This is a sample strategy file
+#This is a cool sample strategy file
