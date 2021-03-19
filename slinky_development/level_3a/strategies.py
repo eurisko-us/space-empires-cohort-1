@@ -1,4 +1,5 @@
-class BerserkerStrategy:
+class Strategy1:
+    # Berserker
 
     def __init__(self, player_number):
         self.player_number = player_number
@@ -30,7 +31,8 @@ class BerserkerStrategy:
                     'number': unit['num']
                 }
 
-class StationaryStrategy:
+class Strategy2:
+    # Stationary Strategy
 
     def __init__(self, player_number):
         self.player_number = player_number
