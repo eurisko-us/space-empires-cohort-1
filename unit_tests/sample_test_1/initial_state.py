@@ -1,1 +1,0 @@
-#This is a cool sample initial state
