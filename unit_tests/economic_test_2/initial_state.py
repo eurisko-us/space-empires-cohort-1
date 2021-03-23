@@ -1,36 +1,29 @@
 game_state = {
     'turn': 1,
     'board_size': [7, 7],
-    'phase': 'Movement',
+    'phase': 'Economic',
     'round': 3,
     'current_player': 1,
     'winner': None,
     'players': {
-        1: {'cp': 0,
-            'homeworld': {'coords': (3,0), 'type': 'Homeworld', 'hits_left': 3, 'turn_created': 0},
+        1: {'cp': 23,
+            'homeworld': {'coords': (3,0), 'type': 'Homeworld', 'hits_left': 3, 'turn_created': 1},
             'units': [
-                {'coords': (0,0), 'type': 'Scout', 'num': 1, 'hits_left': 1, 'turn_created': 0,
+                {'coords': (0,0), 'type': 'Scout', 'num': 1, 'hits_left': 1, 'turn_created': 1,
                     'technology': {
                         'attack': 0,
                         'defense': 0,
                         'movement': 1
                     }
                 },
-                {'coords': (0,0), 'type': 'Scout', 'num': 2, 'hits_left': 1, 'turn_created': 0,
+                {'coords': (0,0), 'type': 'Scout', 'num': 2, 'hits_left': 1, 'turn_created': 1,
                     'technology': {
                         'attack': 0,
                         'defense': 0,
                         'movement': 1
                     }
                 },
-                {'coords': (3,0), 'type': 'Shipyard', 'num': 1, 'hits_left': 1, 'turn_created': 0,
-                    'technology': {
-                        'attack': 0,
-                        'defense': 0,
-                        'movement': 1
-                    }
-                },
-                {'coords': (3,0), 'type': 'Shipyard', 'num': 2, 'hits_left': 1, 'turn_created': 0,
+                {'coords': (0,0), 'type': 'Scout', 'num': 3, 'hits_left': 1, 'turn_created': 1,
                     'technology': {
                         'attack': 0,
                         'defense': 0,
@@ -40,30 +33,30 @@ game_state = {
             'technology': {'attack': 0, 'defense': 0, 'movement': 1, 'shipsize': 0}
         },
         2: {'cp': 0,
-            'homeworld': {'coords': (3,6), 'type': 'Homeworld', 'hits_left': 3, 'turn_created': 0},
+            'homeworld': {'coords': (3,6), 'type': 'Homeworld', 'hits_left': 3, 'turn_created': 1},
             'units': [
-                {'coords': (0,6), 'type': 'Scout', 'num': 1, 'hits_left': 1, 'turn_created': 0,
+                {'coords': (0,6), 'type': 'Scout', 'num': 1, 'hits_left': 1, 'turn_created': 1,
                     'technology': {
                         'attack': 0,
                         'defense': 0,
                         'movement': 1
                     }
                 },
-                {'coords': (0,6), 'type': 'Scout', 'num': 2, 'hits_left': 1, 'turn_created': 0,
+                {'coords': (0,6), 'type': 'Scout', 'num': 2, 'hits_left': 1, 'turn_created': 1,
                     'technology': {
                         'attack': 0,
                         'defense': 0,
                         'movement': 1
                     }
                 },
-                {'coords': (0,6), 'type': 'Scout', 'num': 3, 'hits_left': 1, 'turn_created': 0,
+                {'coords': (0,6), 'type': 'Scout', 'num': 3, 'hits_left': 1, 'turn_created': 1,
                     'technology': {
                         'attack': 0,
                         'defense': 0,
                         'movement': 1
                     }
                 },
-                {'coords': (3,6), 'type': 'Shipyard', 'num': 1, 'hits_left': 1, 'turn_created': 0,
+                {'coords': (3,6), 'type': 'Shipyard', 'num': 1, 'hits_left': 1, 'turn_created': 1,
                     'technology': {
                         'attack': 0,
                         'defense': 0,
@@ -71,8 +64,7 @@ game_state = {
                     }
                 }],
             'technology': {'attack': 0, 'defense': 0, 'movement': 1, 'shipsize': 0}
-        }
-    },
+    }},
     'planets': [(3,0), (3,6)],
     'unit_data': {
         'Battleship': {'cp_cost': 20, 'hullsize': 3, 'shipsize_needed': 5, 'tactics': 5, 'attack': 5, 'defense': 2, 'maintenance': 3},
