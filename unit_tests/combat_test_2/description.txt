@@ -1,0 +1,13 @@
+Game Level: N/A
+
+=================================================
+
+Test: Each player starts with 10 Scouts, then:
+
+They both attack eachother with a random seed of 0
+
+=================================================
+
+Outcome:
+
+Player 2 has 8 scouts remaining, Scout ID's 3-10.
