@@ -11,7 +11,7 @@ final_state = {
             'technology': {'attack': 0, 'defense': 1, 'movement': 1, 'shipsize': 1}
         }, 
         2: {
-            'homeworld': {'coords': (0, 2), 'type': 'Homeworld', 'hits_left': 4, 'turn_created': 0}
+            'homeworld': {'coords': (0, 2), 'type': 'Homeworld', 'hits_left': 4, 'turn_created': 0},
             'units': [
                 {'num': 3, 'coords': (0, 1), 'type': 'Scout', 'hits_left': 1, 'turn_created': 0,  
                     'technology': {
