@@ -1,5 +1,6 @@
 from unit import Unit, from_type
 from player import Player
+from technology import Technology
 from log import Log
 
 class State:
@@ -33,7 +34,8 @@ class State:
                 "cp": Player.from_id(state, player_id)["cp"],
                 "homeworld": State.single_unit_state(Player.get_homeworld(state, player_id), hidden),
                 "units": [State.single_unit_state(unit, hidden) for unit in Player.get_units(state, player_id)
-                    if Player.from_id(state, player_id)["homeworld"] != Unit.get_id(unit)]
+                    if Player.from_id(state, player_id)["homeworld"] != Unit.get_id(unit)],
+                "technology": Technology.copy_player_tech(state, player_id)
             }
 
     @staticmethod
