@@ -23,22 +23,15 @@ def matchup(type1, type2):
     wins = [0, 0, 0]
     games = 100
     winlog = False
+    strats = [type1, type2]
     for i in range(games):
-        first_player = 0 if i < games//2 else 1
+        if i == games//2:
+            strats.reverse()
         random.seed(i+1)
         log = i in []
         # log = True
-        game = Game((7, 7), logging=log, rendering=False, game_level=3, die_size=10)
-        p1 = Player(type1(first_player), "Player1", (3, 6*first_player), game)
-        p2 = Player(type2(1-first_player), "Player2", (3, 6 - 6*first_player), game)
-        if first_player == 0:
-            game.add_player(p1)
-            game.add_player(p2)
-        else:
-            game.add_player(p2)
-            game.add_player(p1)
-
-        game.start()
+        game = Game((7, 7), game_level=3, die_size=10)
+        game.start(strats)
 
         if game.run_until_completion(max_turns=100):
             if winlog: print(type(game.winner.strat).__name__, i)
@@ -70,5 +63,5 @@ def matchup(type1, type2):
 # print(matchup(NumbersBerserkerLevel3, ColbyStrategyLevel3))
 # print(matchup(NumbersBerserkerLevel3, GeorgeStrategyLevel3))
 # print(matchup(NumbersBerserkerLevel3, RileyStrategyLevel3))
-# print(matchup(NumbersBerserkerLevel3, ElijahStrategyLevel3))
+print(matchup(NumbersBerserkerLevel3, ElijahStrategyLevel3))
 # print(matchup(NumbersBerserkerLevel3, DavidStrategyLevel3))
