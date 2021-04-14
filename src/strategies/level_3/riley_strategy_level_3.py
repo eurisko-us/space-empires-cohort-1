@@ -20,7 +20,7 @@ class RileyStrategyLevel3:
         else:
             best_translation = (0,0)
 
-
+        
 
         return best_translation
 
@@ -55,13 +55,15 @@ class RileyStrategyLevel3:
     def decide_removal(self,game_state):
         for unit in game_state['players'][self.player_index]['units']:
             if unit['type'] == 'Scout':
-                return game_state['players'][self.player_index]['units'].index(unit)
+                return unit['unit_num']
 
     def decide_purchases(self,game_state):
         units = []
         tech = []
+
         build_capacity = len([unit for unit in game_state['players'][self.player_index]['units'] if unit['type'] == 'ShipYard'])
         spawn_loc = game_state['players'][self.player_index]['homeworld']['coords']
+
         cp = game_state['players'][self.player_index]['cp']
         defense_tech = game_state['players'][self.player_index]['technology']['defense']
         attack_tech = game_state['players'][self.player_index]['technology']['attack']
@@ -71,33 +73,32 @@ class RileyStrategyLevel3:
         attack = ['attack',attack_cost,attack_tech]
         cheapest = [tech[1] for tech in [defense,attack]].index(min([tech[1] for tech in [defense,attack]]))
         tech_choice = [defense,attack][cheapest]
-        ship_choice = ['Scout',6]
+        ship_choice = ['Scout',6] 
         if defense_tech == 2 and attack_tech == 2:
             full_tech = True
         else:
             full_tech = False
 
-        if cp >= ship_choice[1] and build_capacity >= 1:
+        if cp >= ship_choice[1]:
             units.append({'type':ship_choice[0], 'coords':spawn_loc})
             cp -= ship_choice[1]
-            build_capacity -= 1
 
         if not full_tech:
             if cp >= tech_choice[1]:
                 tech_choice[2]+=1
                 tech.append(tech_choice[0])
                 cp -= tech_choice[1]
+                #print(tech_choice[2],tech_choice[0])
                 if tech_choice[0] == 'defense':
                     tech_choice = attack
                 elif tech_choice[0] == 'attack':
                     tech_choice = defense
-
+                    
 
         if full_tech:
-            while cp >= ship_choice[1] and build_capacity >= 1:
+            while cp >= ship_choice[1]:
                 units.append({'type':ship_choice[0], 'coords':spawn_loc})
                 cp -= ship_choice[1]
-                build_capacity -= 1
 
-
+            
         return {'units':units,'technology':tech}
