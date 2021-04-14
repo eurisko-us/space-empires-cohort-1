@@ -29,6 +29,7 @@ class NumbersBerserkerLevel3:
 
         return best_translation
 
+<<<<<<< HEAD
     def decide_which_unit_to_attack(self, combat_state, coords, attacker_type, attacker_index):
         combat_order = combat_state[coords]
         player_indices = [unit['player'] for unit in combat_order]
@@ -37,6 +38,10 @@ class NumbersBerserkerLevel3:
         for combat_index, unit in enumerate(combat_order):
             if unit['player'] == opponent_index:
                 return (unit['player'],unit['type'],unit['num'])
+=======
+    def decide_which_unit_to_attack(self, combat_state, coords, attacker_type, attacker_num):
+        return next((u['player'], u['type'], u['num']) for u in combat_state[coords] if self.player_index != u['player'])
+>>>>>>> 035d66f7e1c6a000df8b61dce4205a2737922331
 
     # Buy all possible scouts
     def decide_purchases(self, game_state):
