@@ -1,6 +1,7 @@
 from technology import Technology
 from unit import Unit, from_type
 from player import Player
+from technology import Technology
 from log import Log
 
 class State:

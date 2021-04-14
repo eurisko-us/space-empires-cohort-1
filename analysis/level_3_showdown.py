@@ -21,7 +21,7 @@ print("Playing games...")
 def matchup(type1, type2):
     print(f"\n {type1.__name__} vs {type2.__name__}")
     wins = [0, 0, 0]
-    games = 100
+    games = 50
     winlog = False
     strats = [type1, type2]
     for i in range(games):

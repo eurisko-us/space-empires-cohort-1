@@ -4,12 +4,11 @@ class NumbersBerserkerLevel3:
 
     def __init__(self, player_index):
         self.player_index = player_index
-        self.opponent_index = 1 if player_index == 2 else 2
 
     def decide_ship_movement(self, unit_index, hidden_game_state):
-        myself = hidden_game_state['players'][self.player_index]
-        opponent_index = 1 if self.player_index == 2 else 2
-        opponent = hidden_game_state['players'][opponent_index]
+        myself = hidden_game_state['players'][self.player_index+1]
+        opponent_index = self.player_index
+        opponent = hidden_game_state['players'][opponent_index+1]
 
         unit = myself['units'][unit_index]
         x_unit, y_unit = unit['coords']
@@ -29,14 +28,8 @@ class NumbersBerserkerLevel3:
 
         return best_translation
 
-    def decide_which_unit_to_attack(self, combat_state, coords, attacker_type, attacker_index):
-        combat_order = combat_state[coords]
-        player_indices = [unit['player'] for unit in combat_order]
-
-        opponent_index = 1 if self.player_index == 2 else 2
-        for combat_index, unit in enumerate(combat_order):
-            if unit['player'] == opponent_index:
-                return (unit['player'],unit['type'],unit['num'])
+    def decide_which_unit_to_attack(self, hidden_game_state_for_combat, combat_state, coords, attacker_index):
+        return next(i for i, x in enumerate(combat_state[coords]) if self.player_index != x['player'])
 
     # Buy all possible scouts
     def decide_purchases(self, game_state):

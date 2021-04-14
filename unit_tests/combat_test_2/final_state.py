@@ -1,91 +1,86 @@
 final_state = {
-    'turn': 2,
-    'board_size': [7, 7],
-    'phase': 'Economic',
-    'round': None,
-    'current_player': 2,
+    'turn': 1,
     'winner': None,
+    'board_size': (1, 3),
+    'phase': 'Combat',
+    'round': None,
     'players': {
-        1: {'cp': 4,
-            'homeworld': {'coords': (3,0), 'type': 'Homeworld', 'hits_left': 3, 'turn_created': 1},
+        1: {
+            'homeworld': {'coords': (0, 0), 'type': 'Homeworld', 'hits_left': 4, 'turn_created': 0}, 
+            'units': [], 
+            'technology': {'attack': 0, 'defense': 1, 'movement': 1, 'shipsize': 1}
+        }, 
+        2: {
+            'homeworld': {'coords': (0, 2), 'type': 'Homeworld', 'hits_left': 4, 'turn_created': 0},
             'units': [
-                {'coords': (3,0), 'type': 'Scout', 'num': 1, 'hits_left': 1, 'turn_created': 1,
-                    'technology': {
-                        'attack': 0,
-                        'defense': 0,
-                        'movement': 1
-                    }
-                },
-                {'coords': (3,0), 'type': 'Scout', 'num': 2, 'hits_left': 1, 'turn_created': 1,
-                    'technology': {
-                        'attack': 0,
-                        'defense': 0,
-                        'movement': 1
-                    }
-                },
-                {'coords': (3,0), 'type': 'Shipyard', 'num': 1, 'hits_left': 1, 'turn_created': 1,
-                    'technology': {
-                        'attack': 0,
-                        'defense': 0,
-                        'movement': 1
-                    }
-                },
-                {'coords': (3,0), 'type': 'Shipyard', 'num': 2, 'hits_left': 1, 'turn_created': 1,
-                    'technology': {
-                        'attack': 0,
-                        'defense': 0,
-                        'movement': 1
-                    }
-                },
-                {'coords': (3,0), 'type': 'Scout', 'num': 3, 'hits_left': 1, 'turn_created': 2,
-                    'technology': {
-                        'attack': 1,
-                        'defense': 0,
-                        'movement': 1,
-                        'shipsize': 1
-                    }
-                },
-            ],
-            'technology': {'attack': 1, 'defense': 0, 'movement': 1, 'shipsize': 1}
-        },
-        2: {'cp': 0,
-            'homeworld': {'coords': (3,6), 'type': 'Homeworld', 'hits_left': 3, 'turn_created': 1},
-            'units': [
-                {'coords': (3,6), 'type': 'Shipyard', 'num': 1, 'hits_left': 1, 'turn_created': 1,
-                    'technology': {
-                        'attack': 0,
-                        'defense': 0,
-                        'movement': 1
-                    }
-                },
-                {'coords': (3,6), 'type': 'Shipyard', 'num': 2, 'hits_left': 1, 'turn_created': 1,
-                    'technology': {
-                        'attack': 0,
-                        'defense': 0,
-                        'movement': 1
-                    }
-                },
-                {'coords': (3,6), 'type': 'Scout', 'num': 1, 'hits_left': 1, 'turn_created': 1,
+                {'num': 3, 'coords': (0, 1), 'type': 'Scout', 'hits_left': 1, 'turn_created': 0,  
                     'technology': {
                         'attack': 0,
                         'defense': 1,
                         'movement': 1,
                         'shipsize': 1,
                     }
-                },
-                {'coords': (3,6), 'type': 'Scout', 'num': 2, 'hits_left': 1, 'turn_created': 1,
+                },  
+                {'num': 4, 'coords': (0, 1), 'type': 'Scout', 'hits_left': 1, 'turn_created': 0,  
                     'technology': {
                         'attack': 0,
                         'defense': 1,
                         'movement': 1,
-                        'shipsize': 1
+                        'shipsize': 1,
                     }
-                },
-            ],
-            'technology': {'attack': 0, 'defense': 1, 'movement': 1, 'shipsize': 1}
+                }, 
+                {'num': 5, 'coords': (0, 1), 'type': 'Scout', 'hits_left': 1, 'turn_created': 0,  
+                    'technology': {
+                        'attack': 0,
+                        'defense': 1,
+                        'movement': 1,
+                        'shipsize': 1,
+                    }
+                }, 
+                {'num': 6, 'coords': (0, 1), 'type': 'Scout', 'hits_left': 1, 'turn_created': 0,  
+                    'technology': {
+                        'attack': 0,
+                        'defense': 1,
+                        'movement': 1,
+                        'shipsize': 1,
+                    }
+                }, 
+                {'num': 7, 'coords': (0, 1), 'type': 'Scout', 'hits_left': 1, 'turn_created': 0,  
+                    'technology': {
+                        'attack': 0,
+                        'defense': 1,
+                        'movement': 1,
+                        'shipsize': 1,
+                    }
+                }, 
+                {'num': 8, 'coords': (0, 1), 'type': 'Scout', 'hits_left': 1, 'turn_created': 0,  
+                    'technology': {
+                        'attack': 0,
+                        'defense': 1,
+                        'movement': 1,
+                        'shipsize': 1,
+                    }
+                }, 
+                {'num': 9, 'coords': (0, 1), 'type': 'Scout', 'hits_left': 1, 'turn_created': 0,  
+                    'technology': {
+                        'attack': 0,
+                        'defense': 1,
+                        'movement': 1,
+                        'shipsize': 1,
+                    }
+                }, 
+                {'num': 10, 'coords': (0, 1), 'type': 'Scout', 'hits_left': 1, 'turn_created': 0, 
+                    'technology': {
+                        'attack': 0,
+                        'defense': 1,
+                        'movement': 1,
+                        'shipsize': 1,
+                    }
+                },  
+            ], 
+            'technology': {'attack': 0, 'defense': 1, 'movement': 1, 'shipsize': 1}, 
         }
-    },
-    'planets': [(3,0), (3,6)],
+    'planets': [(0,0), (0,2)],
     'unit_data': {
         'Battleship': {'cp_cost': 20, 'hullsize': 3, 'shipsize_needed': 5, 'tactics': 5, 'attack': 5, 'defense': 2, 'maintenance': 3},
         'Battlecruiser': {'cp_cost': 15, 'hullsize': 2, 'shipsize_needed': 4, 'tactics': 4, 'attack': 5, 'defense': 1, 'maintenance': 2},
@@ -103,6 +98,10 @@ final_state = {
         'attack': [20, 30, 40],
         'defense': [20, 30, 40],
         'movement': [0, 20, 30, 40, 40, 40],
-        'shipyard': [0, 20, 30]
+        'shipyard': [0, 20, 30],
+        'terraform': [25], 
+        'tactics': [15, 20, 30], 
+        'exploration': [15]},
     }
-}
+    'combat': {}
+} #TLDR the last 8 ships of player 2 survive in the 10v10 combat scenario

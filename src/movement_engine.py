@@ -25,7 +25,6 @@ class MovementEngine:
                         continue
 
                     old_pos = unit["pos"]
-                    #! The arguments for this are wrong, we should update in the future
                     translation = player["strategy"].decide_ship_movement(unit["num"], State.generate_hidden(state, player["id"]))
 
                     if translation != (0, 0):
