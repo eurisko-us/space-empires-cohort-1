@@ -1,3 +1,4 @@
+from technology import Technology
 from unit import Unit, from_type
 from player import Player
 from technology import Technology
@@ -36,7 +37,7 @@ class State:
                 "units": [State.single_unit_state(unit, hidden) for unit in Player.get_units(state, player_id)
                     if Player.from_id(state, player_id)["homeworld"] != Unit.get_id(unit)],
                 "technology": Technology.copy_player_tech(state, player_id)
-            }
+                }
 
     @staticmethod
     def single_unit_state(unit: dict, hidden: bool) -> dict:

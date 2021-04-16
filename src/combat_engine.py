@@ -1,6 +1,7 @@
 from board import Board
 from unit import Unit, from_type
 from technology import Technology
+from win_exception import WinException
 
 class CombatEngine:
     @staticmethod
@@ -55,8 +56,15 @@ class CombatEngine:
             attacking_player = state["players"][attacker["player_id"]]
 
             #! This could be more efficient
+            unit_owners = Board.filter_units(state, pos, map = lambda x: x["player_id"])
+            players_owning_homeworlds = Board.filter_units(state, pos, map = lambda x: x["player_id"], filter = lambda x: x["type"] == "Homeworld")
             if not Board.is_battle(state, pos):
                 break
+            elif len(players_owning_homeworlds) > 0:
+                if unit_owners.count(players_owning_homeworlds[0]) > 1:
+                    # From here it's just the homeworld vs other units, so
+                    # The other player immediately wins
+                    raise WinException
 
             #! I don't like this because it has a bunch of extra looping
             combat_state = CombatEngine.generate_combat_state(state)
