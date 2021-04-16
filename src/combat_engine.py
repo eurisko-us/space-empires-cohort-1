@@ -79,7 +79,6 @@ class CombatEngine:
 
     @staticmethod
     def duel(state: dict, attacker_id: int, defender_id: int):
-        print(attacker_id)
         attacker = state["units"][attacker_id]
         defender = state["units"][defender_id]
         attack_threshold = from_type(attacker["type"]).attack_strength + attacker["technology"]["attack"]

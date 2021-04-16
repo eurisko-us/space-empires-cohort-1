@@ -8,12 +8,12 @@ sys.path.append('src/strategies/level_3')
 from game import Game
 from player import Player
 
-from colby_strategy import ColbySiegeStrategyLevel3 as ColbyStrategyLevel3
-from david_strategy import DavidStrategyLevel3
-from elijah_strategy import ElijahStrategyLevel3
-from george_strategy import GeorgeStrategyLevel3
+# from colby_strategy import ColbySiegeStrategyLevel3 as ColbyStrategyLevel3
+# from david_strategy import DavidStrategyLevel3
+# from elijah_strategy import ElijahStrategyLevel3
+from george_strategy_level_3 import GeorgeStrategyLevel3
 from numbers_berserker import NumbersBerserkerLevel3
-from riley_strategy import RileyStrategyLevel3
+from riley_strategy_level_3 import RileyStrategyLevel3
 
 
 print("Playing games...")
