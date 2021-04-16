@@ -63,5 +63,6 @@ def matchup(type1, type2):
 # print(matchup(NumbersBerserkerLevel3, ColbyStrategyLevel3))
 # print(matchup(NumbersBerserkerLevel3, GeorgeStrategyLevel3))
 # print(matchup(NumbersBerserkerLevel3, RileyStrategyLevel3))
+
 print(matchup(NumbersBerserkerLevel3, ElijahStrategyLevel3))
 # print(matchup(NumbersBerserkerLevel3, DavidStrategyLevel3))
