@@ -8,12 +8,12 @@ sys.path.append('src/strategies/level_3')
 from game import Game
 from player import Player
 
-from colby_strategy import ColbySiegeStrategyLevel3 as ColbyStrategyLevel3
-from david_strategy import DavidStrategyLevel3
-from elijah_strategy import ElijahStrategyLevel3
-from george_strategy import GeorgeStrategyLevel3
+# from colby_strategy import ColbySiegeStrategyLevel3 as ColbyStrategyLevel3
+# from david_strategy import DavidStrategyLevel3
+# from elijah_strategy import ElijahStrategyLevel3
+from george_strategy_level_3 import GeorgeStrategyLevel3
 from numbers_berserker import NumbersBerserkerLevel3
-from riley_strategy import RileyStrategyLevel3
+from riley_strategy_level_3 import RileyStrategyLevel3
 
 
 print("Playing games...")
@@ -60,7 +60,7 @@ def matchup(type1, type2):
 # print(matchup(DavidStrategyLevel3, ElijahStrategyLevel3))
 
 # print(matchup(NumbersBerserkerLevel3, ColbyStrategyLevel3))
-# print(matchup(NumbersBerserkerLevel3, GeorgeStrategyLevel3))
-print(matchup(NumbersBerserkerLevel3, RileyStrategyLevel3))
+print(matchup(NumbersBerserkerLevel3, GeorgeStrategyLevel3))
+# print(matchup(NumbersBerserkerLevel3, RileyStrategyLevel3))
 # print(matchup(NumbersBerserkerLevel3, ElijahStrategyLevel3))
 # print(matchup(NumbersBerserkerLevel3, DavidStrategyLevel3))
