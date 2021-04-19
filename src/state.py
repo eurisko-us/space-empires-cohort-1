@@ -146,7 +146,7 @@ class State:
             "phase": state["phase"],
             "round": state["round"],
             "board_state": board_state,
-            "log": Log(True, True),
+            "log": Log(False, True),
             "current_player": state["current_player"]
         }
 
