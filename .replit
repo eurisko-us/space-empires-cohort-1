@@ -1,2 +1,2 @@
 language = "bash"
-run = "python analysis/level_3_showdown.py"
+run = "python unit_tests/run_tests.py"
