@@ -26,10 +26,7 @@ class CombatEngine:
                 state["log"].info(f"\tCombat at {str(pos)}\n ")
                 CombatEngine.destroy_non_combat_units(state, pos)
                 while Board.is_battle(state, pos):
-                    battle_result = CombatEngine.battle(state, pos)
-                    
-                    if battle_result is not None:
-                        return battle_result
+                    CombatEngine.battle(state, pos)
 
             # Log survivors
             state["log"].info("\tSurvivors:\n")
@@ -67,7 +64,7 @@ class CombatEngine:
                 if unit_owners.count(players_owning_homeworlds[0]) > 1:
                     # From here it's just the homeworld vs other units, so
                     # The other player immediately wins
-                    return attacker['player_id']
+                    raise WinException
 
             #! I don't like this because it has a bunch of extra looping
             combat_state = CombatEngine.generate_combat_state(state)
