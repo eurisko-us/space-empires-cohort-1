@@ -1,3 +1,4 @@
+<<<<<<< HEAD:unit_tests/combat_test_2/description.txt
 *NOTE use a (1,2) size board*
 
 Game Level: N/A
@@ -13,3 +14,22 @@ They both attack eachother with a random seed of 0
 Outcome:
 
 Player 2 has 8 scouts remaining, Scout ID's 3-10.
+
+this was a waste of time
+=======
+*NOTE use a (1,2) size board*
+
+Game Level: N/A
+
+=================================================
+
+Test: Each player starts with 10 Scouts, then:
+
+They both attack eachother with a random seed of 0
+
+=================================================
+
+Outcome:
+
+Player 2 has 8 scouts remaining, Scout ID's 3-10.
+>>>>>>> main:unit_tests/combat_test_1/description.txt
