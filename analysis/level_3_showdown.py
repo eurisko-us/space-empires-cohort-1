@@ -8,12 +8,12 @@ sys.path.append('src/strategies/level_3')
 from game import Game
 from player import Player
 
-from colby_strategy_level_3 import ColbyStrategyLevel3
+# from colby_strategy import ColbySiegeStrategyLevel3 as ColbyStrategyLevel3
 # from david_strategy import DavidStrategyLevel3
-from elijah_strategy_level_3 import ElijahStrategyLevel3
-#from george_strategy_level_3 import GeorgeStrategyLevel3
+# from elijah_strategy import ElijahStrategyLevel3
+from george_strategy_level_3 import GeorgeStrategyLevel3
 from numbers_berserker import NumbersBerserkerLevel3
-#from riley_strategy_level_3 import RileyStrategyLevel3
+from riley_strategy_level_3 import RileyStrategyLevel3
 
 
 print("Playing games...")
@@ -34,8 +34,8 @@ def matchup(type1, type2):
         game.start(strats)
 
         if game.run_until_completion(max_turns=100):
-            if winlog: print(type(game.state['players'][game.state["winner"]]['strategy']).__name__, i)
-            wins[[type1, type2].index(type(game.state['players'][game.state["winner"]]['strategy']))] += 1
+            if winlog: print(type(game.winner.strat).__name__, i)
+            wins[[type1, type2].index(type(game.winner.strat))] += 1
         else:
             if winlog: print("tie", i)
             wins[2] += 1
@@ -44,9 +44,6 @@ def matchup(type1, type2):
             input()
     wins = [w/games for w in wins]
     return wins
-
-print(matchup(NumbersBerserkerLevel3, ColbyStrategyLevel3))
-print(matchup(NumbersBerserkerLevel3, ElijahStrategyLevel3))
 
 # I had to change colby's strategy
 # print(matchup(ColbyStrategyLevel3, GeorgeStrategyLevel3))
@@ -66,5 +63,6 @@ print(matchup(NumbersBerserkerLevel3, ElijahStrategyLevel3))
 # print(matchup(NumbersBerserkerLevel3, ColbyStrategyLevel3))
 # print(matchup(NumbersBerserkerLevel3, GeorgeStrategyLevel3))
 # print(matchup(NumbersBerserkerLevel3, RileyStrategyLevel3))
-# print(matchup(NumbersBerserkerLevel3, ElijahStrategyLevel3))
+
+print(matchup(NumbersBerserkerLevel3, ElijahStrategyLevel3))
 # print(matchup(NumbersBerserkerLevel3, DavidStrategyLevel3))
