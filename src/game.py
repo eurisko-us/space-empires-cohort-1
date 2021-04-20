@@ -42,10 +42,8 @@ class Game:
         while self.state["turn"] <= max_turns:
             MovementEngine.run_phase(self.state)
 
-            try:
-                # Combat Engine raises exception if someone wins
-                CombatEngine.run_phase(self.state)
-            except WinException:
+            self.state['winner'] = CombatEngine.run_phase(self.state)
+            if self.state['winner'] is not None:
                 break
 
             if self.state["game_level"] > 2:
@@ -54,7 +52,7 @@ class Game:
             self.state["turn"] += 1
 
         self.state["log"].save()
-        if self.state["winner"]:
+        if self.state["winner"] is not None:
             return True
         else:
             return False
@@ -62,7 +60,7 @@ class Game:
     def die_roll(self):
         if self.state["die_mode"] == "ascend":
             self.state["last_die"] += 1
-            return ((self.state["last_die"]-1) % self["die_size"]) + 1
+            return ((self.state["last_die"]-1) % self.state["die_size"]) + 1
         elif self.state["die_mode"]  == "normal":
             return math.ceil(self.state["die_size"]*random.random())
         elif self.state["die_mode"] == "descend":
