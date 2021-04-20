@@ -14,7 +14,7 @@ class GeorgeStrategyLevel3:
 
     def decide_purchases(self, game_state):
         myself = game_state['players'][self.player_index]
-        home_coords= game_state['players'][self.player_index]['home_coords']
+        home_coords= game_state['players'][self.player_index]['homeworld']['coords']
         units = myself['units']
         scouts = [unit for unit in units if unit['type'] == 'Scout']
         shipyards = [unit for unit in units if unit['type'] == 'ShipYard']
@@ -36,7 +36,7 @@ class GeorgeStrategyLevel3:
 
     def decide_ship_movement(self, unit_index, hidden_game_state):
         myself = hidden_game_state['players'][self.player_index]
-        home_coords= tuple(hidden_game_state['players'][self.player_index]['home_coords'])
+        home_coords= tuple(hidden_game_state['players'][self.player_index]['homeworld']['coords'])
         units = myself['units']
         scouts = [unit for unit in units if unit['type'] == 'Scout' and tuple(unit['coords']) != home_coords]
         num_units = len(scouts)
@@ -73,14 +73,14 @@ class GeorgeStrategyLevel3:
         else:
             return (0,0)
 
-    def decide_which_unit_to_attack(self, hidden_game_state_for_combat, combat_state, coords, attacker_index):
-        # attack opponent's first ship in combat order
+    def decide_which_unit_to_attack(self, combat_state, coords, attacker_type, attacker_index):
         combat_order = combat_state[coords]
         player_indices = [unit['player'] for unit in combat_order]
-        opponent_index = 1 - self.player_index
+
+        opponent_index = 1 if self.player_index == 2 else 2
         for combat_index, unit in enumerate(combat_order):
             if unit['player'] == opponent_index:
-                return combat_index
+                return (unit['player'],unit['type'],unit['num'])
 
     def decide_removal(self,game_state):
         return -1

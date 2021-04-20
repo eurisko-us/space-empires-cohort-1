@@ -25,7 +25,7 @@ class MovementEngine:
                         continue
 
                     old_pos = unit["pos"]
-                    translation = player["strategy"].decide_ship_movement(unit["type"], unit["num"], State.generate_hidden(state, player["id"]))
+                    translation = player["strategy"].decide_ship_movement(unit["num"], State.generate_hidden(state, player["id"]))
 
                     if translation != (0, 0):
                         new_pos = (old_pos[0] + translation[0], old_pos[1] + translation[1])
