@@ -1,4 +1,4 @@
-final_state = {
+game_state = {
     'turn': 2,
     'board_size': [7, 7],
     'phase': 'Economic',
