@@ -1,4 +1,4 @@
-class TenvTenStrategy:
+class Strategy:
     def __init__(self, player_index):
         self.__name__ = 'TenvTenStrategy'
         self.player_number = player_index
