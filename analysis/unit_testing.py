@@ -26,20 +26,21 @@ from movement_test_1.strategies import Strategy as mov_strat_1
 # from combat_test_2.strategies import Strategy2 as com_strat2_2
 
 def run_test(init_state,fin_state,strat1,strat2):
-    phase=init_state["phase"]
     strat_1 = strat1
     strat_2 = strat2
     state = State.from_standard(init_state, [strat_1, strat_2])
-    if phase == 'Economic':
+
+    test_type=init_state["phase"]
+
+    if test_type == 'Economic':
         EconomicEngine.run_phase(state)
-    elif phase == 'Combat':
+    elif test_type == 'Combat':
         CombatEngine.run_phase(state)
-    elif phase == 'Movement':
+    elif test_type == 'Movement':
         MovementEngine.run_phase(state)
     state2 = State.from_standard(fin_state, [strat_1, strat_2])
 
-    assert State.compare_native_states(state, state2),"Tests failed"
-
+    assert State.compare_native_states(state, state2),str(test_type)+"Tests failed"
     print("Passed")
 
 print("Economic test 1")
