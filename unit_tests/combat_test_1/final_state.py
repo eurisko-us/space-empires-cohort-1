@@ -12,8 +12,8 @@ game_state = {
             'strategy': Strategy,
             'homeworld': {'coords': (0, 0), 'type': 'Homeworld', 'hits_left': 4, 'turn_created': 0}, 
             'units': [], 
-            'technology': {'attack': 0, 'defense': 1, 'movement': 1, 'shipsize': 1},
-            'cp': 0
+            'cp' : 69,
+            'technology': {'attack': 0, 'defense': 1, 'movement': 1, 'shipsize': 1}
         }, 
         2: {
             'strategy': Strategy,
@@ -84,6 +84,7 @@ game_state = {
                     }
                 },  
             ], 
+            'cp' : 69,
             'technology': {'attack': 0, 'defense': 1, 'movement': 1, 'shipsize': 1}, 
             'cp': 0
         }

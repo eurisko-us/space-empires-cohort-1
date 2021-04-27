@@ -90,9 +90,15 @@ class State:
 
     @staticmethod
     def from_standard(state: dict, strategies: list) -> dict:
+        # print(state['players'][1]['cp'])
+        # for k, p in state["players"].items():
+        #     print('00000')
+        #     print(p)
+        #     print('00000')
+        # assert isinstance(state['players'][1], dict), 'dummy'
         players = {
             k: {
-                "cp": p["cp"],
+                "cp": p['cp'],
                 "id": k,
                 "strategy": strategies[k-1](k),
                 "technology": p["technology"],

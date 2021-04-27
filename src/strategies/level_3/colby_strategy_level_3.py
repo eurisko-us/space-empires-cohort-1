@@ -63,6 +63,7 @@ class ColbyStrategyLevel3(BasicStrategy):
         self.num_of_friendly_scouts = len([ship for ship in self.myself['units'] if ship['type'] == 'Scout'])
         self.num_of_enemy_ships = len(self.enemy['units'])
         self.num_of_enemy_ships_at_enemy_home_base = len([ship for ship in self.enemy['units'] if ship['coords'] == self.enemy_home_base_coords])
+        self.num_of_enemy_scouts = len([ship for ship in self.enemy['units'] if ship['type'] == 'Scout'])
         self.num_of_friendly_scouts_in_siege_position = len(['' for ship in self.myself['units'] if ship['coords'] in self.possible_siege_positions])
 
         if self.num_of_friendly_scouts_in_siege_position < self.num_of_enemy_ships_at_enemy_home_base:
@@ -127,16 +128,17 @@ class ColbyStrategyLevel3(BasicStrategy):
         self.enemy = hidden_game_state['players'][len(hidden_game_state['players']) + 1 - self.player_number]
         self.home_base_coords = self.myself['homeworld']['coords']
         self.enemy_home_base_coords = self.enemy['homeworld']['coords']
-        if self.enemy_home_base_coords[1] > 0: self.possible_siege_positions = [(self.enemy_home_base_coords[0] + 1, self.enemy_home_base_coords[1]), (self.enemy_home_base_coords[0] - 1, self.enemy_home_base_coords[1]), (self.enemy_home_base_coords[0], self.enemy_home_base_coords[1] - 1)]
-        elif self.enemy_home_base_coords[1] == 0: self.possible_siege_positions = [(self.enemy_home_base_coords[0] + 1, 0), (self.enemy_home_base_coords[0] - 1, 0), (self.enemy_home_base_coords[0], 1)]
+        if self.enemy_home_base_coords[1] > 0: self.possible_siege_positions = [(self.enemy_home_base_coords[1] + 1, self.enemy_home_base_coords[1]), (self.enemy_home_base_coords[1] - 1, self.enemy_home_base_coords[1]), (self.enemy_home_base_coords[1], self.enemy_home_base_coords[1] - 1)]
+        elif self.enemy_home_base_coords == 0: self.possible_siege_positions = [(self.enemy_home_base_coords[1] + 1, 0), (self.enemy_home_base_coords[1] - 1, 0), (self.enemy_home_base_coords[1], 1)]
 
         friendly_unit = self.myself['units'][unit_index]
         self.num_of_friendly_ships = len(self.myself['units'])
         self.num_of_friendly_scouts = len([ship for ship in self.myself['units'] if ship['type'] == 'Scout'])
         self.num_of_enemy_ships = len(self.enemy['units'])
         self.num_of_enemy_ships_at_enemy_home_base = len([ship for ship in self.enemy['units'] if ship['coords'] == self.enemy_home_base_coords])
+        self.num_of_enemy_scouts = len([ship for ship in self.enemy['units'] if ship['type'] == 'Scout'])
 
-        if self.num_of_enemy_ships > 4:
+        if self.num_of_enemy_scouts > 0:
             closest_ship_to_home_world = min([unit for unit in self.enemy['units']], key = lambda unit: self.get_distance_to(self.home_base_coords, unit['coords']))
             closest_ship_to_current_unit = min([unit for unit in self.enemy['units']], key = lambda unit: self.get_distance_to(friendly_unit['coords'], unit['coords']))
         else:
@@ -148,21 +150,21 @@ class ColbyStrategyLevel3(BasicStrategy):
         self.num_of_enemy_ships_not_on_midline = len(['' for unit in self.enemy['units'] if unit['coords'] != self.enemy_home_base_coords and unit['coords'][0] != 3])
         
         if self.DIE_DIE_DIE:
-            return self.get_best_translation(hidden_game_state, friendly_unit, closest_ship_to_current_unit['coords'])
+            return self.get_translation(hidden_game_state, friendly_unit, closest_ship_to_current_unit['coords'])
         
         if hidden_game_state['turn'] < 18 and self.closest_enemy_ship_distance_to_home_world > 3:
             return (0,0)
         
         elif self.num_of_enemy_ships_not_on_midline > 0: 
-            return self.get_best_translation(hidden_game_state, friendly_unit, closest_ship_to_current_unit['coords']) # move to counter flank strat
+            return self.get_translation(hidden_game_state, friendly_unit, closest_ship_to_current_unit['coords']) # move to counter flank strat
 
         elif hidden_game_state['turn'] > 18 and self.num_of_enemy_ships < self.num_of_friendly_scouts and friendly_unit['coords'] not in self.possible_siege_positions: # if turn > 18 and the enemy has more ships than us and the current unit is not in possible siege positions
             self.WE_SIEGIN_BOI = True
-            return self.get_best_translation(hidden_game_state, friendly_unit, self.possible_siege_positions[friendly_unit['num'] % 3]) # move into designated siege position
+            return self.get_translation(hidden_game_state, friendly_unit, self.possible_siege_positions[friendly_unit['num'] % 3]) # move into designated siege position
         
         elif self.num_of_enemy_ships_at_enemy_home_base < self.num_of_friendly_scouts_in_siege_position: # if we have more ships in siege position than the enemy has scouts + shipyards then attack home base
             self.DIE_DIE_DIE = True
-            return self.get_best_translation(hidden_game_state, friendly_unit, self.enemy_home_base_coords) # move towards enemy home base
+            return self.get_translation(hidden_game_state, friendly_unit, self.enemy_home_base_coords) # move towards enemy home base
 
         else:
             if self.closest_enemy_ship_distance_to_home_world > 3 and friendly_unit['coords'] in self.possible_siege_positions:# if ship in siege position and we dont have enough ships in siege positions dont move current ship
@@ -172,18 +174,18 @@ class ColbyStrategyLevel3(BasicStrategy):
                     return (0,0) # dont move
 
                 elif self.num_of_friendly_scouts_in_siege_position < 10 < self.num_of_enemy_ships: #if we have basically no ships in siege positions
-                    return self.get_best_translation(hidden_game_state, friendly_unit, self.home_base_coords) #retreat
+                    return self.get_translation(hidden_game_state, friendly_unit, self.home_base_coords) #retreat
 
             else:
 
                 if not self.WE_SIEGIN_BOI and friendly_unit['coords'] != closest_ship_to_current_unit['coords']: # if i amn't sieging and current unit not in same coord as closest ship to current unit
-                    return self.get_best_translation(hidden_game_state, friendly_unit, closest_ship_to_current_unit['coords']) # move towards closest unit
+                    return self.get_translation(hidden_game_state, friendly_unit, closest_ship_to_current_unit['coords']) # move towards closest unit
 
                 elif friendly_unit['coords'] == closest_ship_to_current_unit['coords']: #if current unit in same coord as closest ship to current unit
                     return (0,0) # dont move
 
             return (0,0) #else
 
-    def get_best_translation(self, hidden_game_state, unit, target_unit_coords):
+    def get_translation(self, hidden_game_state, unit, target_unit_coords):
         translations = [(0,0), (1,0), (-1,0), (0,1), (0,-1)]
-        return min([(translation, self.get_distance_to(self.get_translation(unit, translation), target_unit_coords)) for translation in translations], key = lambda distance: distance[1])[0] #heheh 1 liner gang also the two codes do the same thing
+        return min([(translation, self.get_distance_to(self.get_translation(hidden_game_state, unit, translation), target_unit_coords)) for translation in translations], key = lambda distance: distance[1])[0] #heheh 1 liner gang also the two codes do the same thing
