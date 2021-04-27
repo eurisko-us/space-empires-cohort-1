@@ -18,6 +18,7 @@ class State:
                 pid: State.single_player_data(state, pid, pid != player_id)
                 for pid in state["players"].keys()
             },
+            "cp": 0,
             **State.unit_data(),
             **State.technology_data()
         }
