@@ -1,4 +1,4 @@
-initial_state = {
+game_state = {
     'turn': 1,
     'winner': None,
     'board_size': (1, 3),
@@ -89,10 +89,11 @@ initial_state = {
                     }
                 },  
             ], 
+            'cp' : 69,
             'technology': {'attack': 0, 'defense': 1, 'movement': 1, 'shipsize': 1}
         }, 
         2: {
-            'homeworld': {'coords': (0, 2), 'type': 'Homeworld', 'hits_left': 4, 'turn_created': 0}
+            'homeworld': {'coords': (0, 2), 'type': 'Homeworld', 'hits_left': 4, 'turn_created': 0},
             'units': [
                 {'num': 1, 'coords': (0, 2), 'type': 'Scout', 'hits_left': 1, 'turn_created': 0,  
                     'technology': {
@@ -175,8 +176,9 @@ initial_state = {
                     }
                 },  
             ], 
+            'cp' : 69,
             'technology': {'attack': 0, 'defense': 1, 'movement': 1, 'shipsize': 1}, 
-        }
+        },
     'planets': [(0,0), (0,2)],
     'unit_data': {
         'Battleship': {'cp_cost': 20, 'hullsize': 3, 'shipsize_needed': 5, 'tactics': 5, 'attack': 5, 'defense': 2, 'maintenance': 3},
@@ -199,6 +201,6 @@ initial_state = {
         'terraform': [25], 
         'tactics': [15, 20, 30], 
         'exploration': [15]},
-    }
+    },
     'combat': {}
 }
